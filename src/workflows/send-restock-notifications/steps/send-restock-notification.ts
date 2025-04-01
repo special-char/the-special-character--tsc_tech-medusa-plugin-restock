@@ -1,4 +1,3 @@
-import { promiseAll } from "@medusajs/framework/utils";
 import { createStep } from "@medusajs/framework/workflows-sdk";
 import { InferTypeOf, ProductVariantDTO } from "@medusajs/framework/types";
 import RestockSubscription from "../../../modules/restock/models/restock-subscription";
@@ -19,6 +18,7 @@ export const sendRestockNotificationStep = createStep(
     const restockNotificationService:RestockModuleService = container.resolve(RESTOCK_MODULE)
 
     const restockModuleOptions = await restockNotificationService.getOptions()
+
 
     const notificationData = input.map((subscription) => ({
       to: subscription.email,

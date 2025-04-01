@@ -3,6 +3,8 @@ const restockNotificationTemplate = (data, frontendUrl:string) => {
   const productImage = data?.product?.thumbnail || "";
   const productTitle = data?.product?.title;
   const variantTitle = data?.title;
+
+  
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -52,6 +54,20 @@ const restockNotificationTemplate = (data, frontendUrl:string) => {
             font-size: 0.9em;
             color: #666;
         }
+        .item-details {
+            text-align: left;
+            flex-grow: 1;
+            margin-left: 20px;
+        }
+        .item-details strong {
+            font-size: 18px;
+            color: #333;
+        }
+        .item-details p {
+            font-size: 14px;
+            color: #777;
+            margin: 5px 0;
+        }
     </style>
 </head>
 <body>
@@ -65,9 +81,9 @@ const restockNotificationTemplate = (data, frontendUrl:string) => {
                 <div>
                     <img src=${productImage} alt=${productTitle} class="product-image" />
                 </div>
-                <div style="flex: 1; margin-left: 20px;">
-                    <h2 style="font-size: 20px; font-weight: bold; margin: 0 0 5px;">${productTitle}</h2>
-                    <p style="margin: 0;">Variant: ${variantTitle}</p>
+                <div class="item-details">
+                    <strong>${productTitle}</strong>
+                    <p>${variantTitle}</p>
                     <p>
                         <a href=${productUrl} class="button">Shop Now</a>
                     </p>
@@ -75,7 +91,6 @@ const restockNotificationTemplate = (data, frontendUrl:string) => {
             </div>
             <p style="margin-top: 15px;">Hurry! Stock is limited.</p>
         </div>
-        <hr style="border-color: #e0e0e0; margin: 20px 0;" />
     </div>
 </body>
 </html>

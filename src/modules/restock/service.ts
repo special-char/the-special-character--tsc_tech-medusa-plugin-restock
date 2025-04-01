@@ -11,14 +11,16 @@ import { EntityManager } from "@mikro-orm/knex";
 type ModuleOptions = {
   frontendUrl: string;
 };
+
 class RestockModuleService extends MedusaService({
   RestockSubscription,
 }) {
   private options: ModuleOptions;
 
   constructor({}, options?: ModuleOptions) {
-    super();
+    super(...arguments);
     this.options = options || { frontendUrl: "http://localhost:8000" };
+    RestockModuleService.validateOptions(this.options);
   }
 
   static validateOptions(options: Record<any, any>) {
