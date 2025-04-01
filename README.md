@@ -53,11 +53,20 @@ module.exports = defineConfig({
   plugins: [
     {
       resolve: "@tsc_tech/medusa-plugin-restock",
-      options: {},
+      options: {
+        frontendUrl: process.env.FRONTEND_URL,
+      },
     },
     ],
 })
 ```
+
+## Environment Variables
+
+```
+FRONTEND_URL=http://localhost:8000 // your frontend url
+```
+
 
 Run migrations after installation
 

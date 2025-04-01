@@ -1,5 +1,5 @@
-const restockNotificationTemplate = (data) => {
-  const productUrl = `${process.env.FRONTEND_URL}/store/${data?.product?.handle}`;
+const restockNotificationTemplate = (data, frontendUrl:string) => {
+  const productUrl = `${frontendUrl}/store/${data?.product?.handle}`;
   const productImage = data?.product?.thumbnail || "";
   const productTitle = data?.product?.title;
   const variantTitle = data?.title;
